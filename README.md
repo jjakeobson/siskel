@@ -18,7 +18,7 @@ $ bundle install
 Run your tests.
 
 ```sh
-$ ruby test.rb
+$ bundle exec ruby test.rb
 Run options: --seed 10217
 
 # Running:
