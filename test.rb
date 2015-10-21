@@ -41,13 +41,13 @@ class TestSiskel < Minitest::Test
   #   Films with a tomato meter between 51 and 100 get "Thumbs Up".
   #   Films with a tomato meter between 0 and 50 get a "Thumbs Down".
 
-  # def test_movie_consensus_positive
-  #   movie = Siskel.new("The Fifth Element")
-  #   assert_equal "Thumbs Up", movie.consensus
-  # end
+  def test_movie_consensus_positive
+    movie = Siskel.new("The Fifth Element")
+    assert_equal "Thumbs Up", movie.consensus
+  end
 
-  # def test_movie_consensus_negative
-  #   movie = Siskel.new("Daredevil")
-  #   assert_equal "Thumbs Down", movie.consensus
-  # end
+  def test_movie_consensus_negative
+    movie = Siskel.new("Daredevil")
+    assert_equal "Thumbs Down", movie.consensus
+  end
 end
