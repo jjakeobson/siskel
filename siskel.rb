@@ -1,15 +1,15 @@
 require 'httparty'
 
 class Siskel
-  attr_reader :title, :rating, :year, :plot, :metascore, :consensus
+  attr_reader :title, :rating, :year, :plot, :tomato, :consensus
 
   def initialize(title, options={})  #same as year={}
-    @movie = HTTParty.get("http://www.omdbapi.com/?t=#{title}&y=#{options[:year]}&plot=#{options[:plot]}")
+    @movie = HTTParty.get("http://www.omdbapi.com/?t=#{title}&y=#{options[:year]}&plot=#{options[:plot]}&tomatoes=true")
     @title = @movie['Title']
     @rating = @movie['Rated']
     @year = @movie['Year']
     @plot = @movie['Plot']
-    @metascore = @movie['Metascore']
+    @tomato = @movie['tomatoUserMeter']
   end
 
   def title
@@ -21,9 +21,9 @@ class Siskel
   end
 
   def consensus
-    if @metascore.to_i >= 51
+    if @tomato.to_i > 50
       @consensus = "Thumbs Up"
-    else
+    elsif @tomato.to_i < 50
       @consensus = "Thumbs Down"
     end
   end
